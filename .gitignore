@@ -11,5 +11,5 @@ airflow.cfg
 airflow.db
 include/*.*
 data/processed/*.*
-data/intermediate/*.*
+data/intermediary/*.*
 logs/

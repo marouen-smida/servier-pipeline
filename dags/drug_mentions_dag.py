@@ -26,8 +26,8 @@ from src.medmentions.readers import (
 from src.medmentions.writers import write_graph
 
 DATA_DIR = Path(os.environ.get("PIPELINE_DATA_DIR", "/usr/local/airflow/include"))
-INTER_DIR = Path(os.environ.get("PIPELINE_INTER_DIR", "/opt/airflow/data/intermediary"))
-OUT_DIR = Path(os.environ.get("PIPELINE_PROCESSED_DIR", "/opt/airflow/data/processed"))
+INTER_DIR = Path(os.environ.get("PIPELINE_INTER_DIR", "/usr/local/airflow/data/intermediary"))
+OUT_DIR = Path(os.environ.get("PIPELINE_PROCESSED_DIR", "/usr/local/airflow/data/processed"))
 
 
 OUT_JSON = OUT_DIR / "graph.json"
