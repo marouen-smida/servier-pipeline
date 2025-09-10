@@ -38,7 +38,7 @@ jobs:
         run: isort . --check-only --diff
 
       - name: Lint - flake8
-        run: flake8 . --max-line-length=120 --exclude .venv,build,dist,.git,__pycache__
+        run: flake8 . --max-line-length=120 --exclude .venv,build,dist,.git,__pycache__, .astro
 
       - name: Lint - pylint (src only)
         run: pylint src dags
