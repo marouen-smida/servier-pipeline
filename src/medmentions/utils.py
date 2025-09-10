@@ -109,17 +109,13 @@ def normalize_dates(series: pd.Series[Any]) -> pd.Series[date]:
 
     # Fallback: let pandas infer
     if mask.any():
-        part = pd.to_datetime(
-            s[mask], errors="coerce", dayfirst=True, infer_datetime_format=True
-        )
+        part = pd.to_datetime(s[mask], errors="coerce", dayfirst=True, infer_datetime_format=True)
         fill = part.notna()
         parsed.loc[fill.index[fill]] = part[fill]
         mask &= ~fill
 
     if parsed.isna().any():
         bad = s[parsed.isna()].unique().tolist()
-        raise ValueError(
-            f"Unrecognized date formats: {bad[:5]}{'...' if len(bad) > 5 else ''}"
-        )
+        raise ValueError(f"Unrecognized date formats: {bad[:5]}{'...' if len(bad) > 5 else ''}")
 
     return parsed.dt.date
