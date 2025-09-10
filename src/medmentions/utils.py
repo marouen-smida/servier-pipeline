@@ -1,5 +1,6 @@
 from __future__ import annotations
 import unicodedata
+import pandas as pd
 
 #Data formats that needs to be normalized
 _DATE_FORMATS = [
@@ -31,4 +32,26 @@ def normalize_text(text: str) -> str:
     # Collapse whitespace (tabs/newlines/NBSP) and trim
     collapsed = " ".join(lowered.split())
     return collapsed
+
+
+def normalize_text_series(series: pd.Series) -> pd.Series:
+    """Normalize a pandas Series of text using ``normalize_text``.
+
+    - Preserves NaN values
+    - Converts non-string values to string before normalizing
+
+    Args:
+        series: A pandas Series containing text values.
+
+    Returns:
+        A new pandas Series with normalized text.
+    """
+    if not isinstance(series, pd.Series):
+        raise TypeError("normalize_text_series expects a pandas Series")
+
+    normalize_text_serie = series.copy()
+    notna = normalize_text_serie.notna()
+    # Normalize only non-NA entries; cast to str before normalization
+    normalize_text_serie.loc[notna] = normalize_text_serie.loc[notna].astype(str).map(normalize_text)
+    return normalize_text_serie
 
