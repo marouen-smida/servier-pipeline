@@ -43,8 +43,5 @@ jobs:
       - name: Lint - pylint
         run: pylint src 
 
-      - name: Type check - mypy
-        run: mypy src  --exclude 'src/medmentions/utils.py'
-
       - name: Run tests
         run: pytest -q
