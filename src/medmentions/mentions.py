@@ -1,3 +1,5 @@
+from typing import Any, Dict
+
 import pandas as pd
 
 
@@ -72,7 +74,7 @@ def compute_mentions(
     return pd.concat(edges, ignore_index=True)
 
 
-def build_graph_df(edges: pd.DataFrame) -> dict:
+def build_graph_df(edges: pd.DataFrame) -> Dict[str, Any]:
     drugs = edges[["drug_atccode", "drug_name"]].drop_duplicates().sort_values("drug_atccode")
     journals = sorted(edges["journal"].dropna().unique().tolist())
     out_edges = edges.copy()
@@ -87,7 +89,7 @@ def build_graph_df(edges: pd.DataFrame) -> dict:
     }
 
 
-def journal_with_most_distinct_drugs(edges: pd.DataFrame) -> dict:
+def journal_with_most_distinct_drugs(edges: pd.DataFrame) -> Dict[str, Any]:
     if edges.empty:
         return {"journal": None, "distinct_drugs": 0}
     counts = edges.groupby("journal")["drug_atccode"].nunique().sort_values(ascending=False)
