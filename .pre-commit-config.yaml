@@ -1,9 +1,12 @@
 # Run formatters and linters before each commit
-# Install with: pre-commit install
+# Install: pre-commit install
 # Run on all files: pre-commit run --all-files
 
 default_language_version:
   python: python3.10
+
+default_stages: [commit]
+fail_fast: true
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -19,17 +22,13 @@ repos:
     rev: 5.13.2
     hooks:
       - id: isort
-        name: isort (python)
-        args: ["--profile=black"]
 
   - repo: https://github.com/psf/black
     rev: 24.8.0
     hooks:
       - id: black
-        args: ["--line-length=100"]
 
   - repo: https://github.com/pycqa/flake8
     rev: 7.1.1
     hooks:
       - id: flake8
-        additional_dependencies: []
