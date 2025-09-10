@@ -1,2 +1,7 @@
 project:
     name: servier-pipeline
+deployments:
+  local:
+    # Add this volume mount
+    volumes:
+      - ./data:/opt/airflow/data:rw

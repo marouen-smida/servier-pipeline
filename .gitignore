@@ -9,7 +9,7 @@ airflow-webserver.pid
 webserver_config.py
 airflow.cfg
 airflow.db
-include/raw/*.*
-include/processed/*.*
-include/intermediate/*.*
+include/*.*
+data/processed/*.*
+data/intermediary/*.*
 logs/
