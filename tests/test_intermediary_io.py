@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 import pandas.testing as pdt
 
-from medmentions.intermidiate_io import load_df_csv, save_df_csv, save_json
+from medmentions.intermediary_io import load_df_csv, save_df_csv, save_json
 
 
 def test_save_json_creates_parent_and_writes_json(tmp_path: Path):
