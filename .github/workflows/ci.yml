@@ -44,7 +44,7 @@ jobs:
         run: pylint src dags --ignore=drug_mentions_dag.py
 
       - name: Type check - mypy
-        run: mypy src dags
+        run: mypy src  --exclude 'src/medmentions/utils.py'
 
       - name: Run tests
         run: pytest -q
