@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "servier-pipeline"
+version = "0.1.0"
+description = "Pipeline for drugs mentions"
+readme = "README.md"
+authors = [{name = "Marouen Smida", email = "smida.marwen@gmail.com"}]
+requires-python = ">=3.10"
+dependencies = []
+
+
+[tool.isort]
+profile = "black" # harmonize with Black if you later add it
+multi_line_output = 3
+line_length = 100
+
+
+[tool.flake8]
+max-line-length = 120
+exclude = [".git", "__pycache__", ".venv", "build", "dist"]
+extend-ignore = ["E203", "W503", "E501"]
+per-file-ignores = [ "src/pkg_ex/init.py:F401", ".astro/*.py:E501", "dags/*.py:E501", "tests/dags/*.py:E501", ]
+
+
+[tool.pylint.main]
+py-version = "3.10"
+ignore = [".venv", "build", "dist"]
+
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+"missing-module-docstring",
+"missing-class-docstring",
+"missing-function-docstring",
+]
+
+
+[tool.pylint.format]
+max-line-length = 100
+
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
+warn_unreachable = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_optional = true
+show_error_codes = true
+pretty = true
+mypy_path = ["src"]
+
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q --strict-markers"
+testpaths = ["tests"]
+pythonpath = ["src"]
