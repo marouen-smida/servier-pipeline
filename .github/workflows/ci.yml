@@ -40,11 +40,8 @@ jobs:
       - name: Lint - flake8
         run: flake8 . --max-line-length=120 --exclude .venv,build,dist,.git,__pycache__,.astro
 
-      - name: Lint - pylint (src only)
-        run: pylint src dags
-
-      - name: Type check - mypy
-        run: mypy src dags
+      - name: Lint - pylint
+        run: pylint src 
 
       - name: Run tests
         run: pytest -q

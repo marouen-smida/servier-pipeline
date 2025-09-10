@@ -1,0 +1,7 @@
+volumes:
+  airflow_data: {}
+
+services:
+  scheduler:
+    volumes:
+      - ./data:/usr/local/airflow/data

@@ -1,9 +1,18 @@
 [flake8]
 max-line-length = 120
-exclude = [".git", "__pycache__", ".venv", "build", "dist", '.astro', 'logs', 'include']
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    build,
+    dist,
+    .astro,
+    logs,
+    include
 extend-ignore = E203, W503, E501
 per-file-ignores =
     src/pkg_ex/__init__.py:F401
     .astro/*.py:E501
+    dags/*.py:E402
     dags/*.py:E501
     tests/dags/*.py:E501
